@@ -49,7 +49,8 @@ const loadlist = (tasklist) => {
     li.appendChild(threeDots);
     taskListContainer.appendChild(li);
   }
-
+  
+  // Completed task clear button at the bottom
   const tasklistClear = document.createElement('li');
   tasklistClear.classList.add('tasklist-clear-completed');
   const taskClearSpan = document.createElement('span');
