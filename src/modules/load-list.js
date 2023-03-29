@@ -1,4 +1,5 @@
 import returnIcon from '../assets/return.png';
+import addToList from './add-to-list';
 
 const loadlist = (tasklist) => {
   const taskListContainer = document.querySelector('.todolist');
@@ -9,7 +10,6 @@ const loadlist = (tasklist) => {
   newTask.classList.add('new-task');
 
   const textBox = document.createElement('input');
-  textBox.rows = 1;
   textBox.setAttribute('placeholder', 'Add to your list...');
   textBox.classList.add('new-task-input');
   newTask.appendChild(textBox);
@@ -21,14 +21,28 @@ const loadlist = (tasklist) => {
 
   taskListContainer.appendChild(newTask);
 
+  //* Eventlisteners for adding new tasks
+  const newTaskInput = document.querySelector('.new-task-input');
+  newTaskInput.addEventListener('keypress', (e) => {
+    if (e.key == 'Enter' && newTaskInput.value !== '') {
+      addToList(tasklist, newTaskInput.value);
+      newTaskInput.value = '';
+    }
+  });
+  returnBtn.addEventListener('click', () => {
+    if (newTaskInput.value !== '') {
+      addToList(tasklist, newTaskInput.value);
+      newTaskInput.value = '';
+    }
+  });
+
   //* produce the task list
   for (let i = 0; i < tasklist.list.length; i += 1) {
     const li = document.createElement('li');
     li.classList.add('task-item');
     li.id = i + 1;
 
-    const textBox = document.createElement('textarea');
-    textBox.rows = 1;
+    const textBox = document.createElement('input');
     textBox.value = tasklist.list[i].description;
     textBox.classList.add('task-input');
 
