@@ -5,9 +5,7 @@ import TaskList from './modules/tasklist.js';
 
 const tasklist = new TaskList();
 tasklist.addTask('homework');
-console.log(tasklist.list);
 tasklist.addTask('buy groceries');
-console.log(tasklist.list);
 tasklist.addTask('house cleaning');
 tasklist.addTask('last item');
 
