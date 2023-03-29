@@ -4,11 +4,11 @@ const loadlist = (tasklist) => {
   const taskListContainer = document.querySelector('.todolist');
   taskListContainer.textContent = '';
 
-  // New Task text input creation
+  //* New Task text input creation
   const newTask = document.createElement('li');
   newTask.classList.add('new-task');
 
-  const textBox = document.createElement('textarea');
+  const textBox = document.createElement('input');
   textBox.rows = 1;
   textBox.setAttribute('placeholder', 'Add to your list...');
   textBox.classList.add('new-task-input');
@@ -21,11 +21,11 @@ const loadlist = (tasklist) => {
 
   taskListContainer.appendChild(newTask);
 
-  // produce the task lis
+  //* produce the task list
   for (let i = 0; i < tasklist.list.length; i += 1) {
     const li = document.createElement('li');
     li.classList.add('task-item');
-    li.id = i;
+    li.id = i + 1;
 
     const textBox = document.createElement('textarea');
     textBox.rows = 1;
@@ -50,13 +50,14 @@ const loadlist = (tasklist) => {
     taskListContainer.appendChild(li);
   }
 
-  // Completed task clear button at the bottom
+  //* Completed task clear button at the bottom
   const tasklistClear = document.createElement('li');
   tasklistClear.classList.add('tasklist-clear-completed');
   const taskClearSpan = document.createElement('span');
   taskClearSpan.textContent = 'Clear all completed';
   tasklistClear.appendChild(taskClearSpan);
-  taskListContainer.appendChild(tasklistClear);
+  const toDoListContainer = document.querySelector('.todolist-container');
+  toDoListContainer.appendChild(tasklistClear);
 };
 
 export default loadlist;
