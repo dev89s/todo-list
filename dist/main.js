@@ -16,7 +16,7 @@
   \*************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"/* ---- global style ---- */\\n* {\\n  box-sizing: border-box;\\n  padding: 0;\\n  margin: 0;\\n}\\n\\nul {\\n  list-style: none;\\n  padding: 20px;\\n}\\n\\n/* ---- list styles ---- */\\n\\n.todolist-container {\\n  display: flex;\\n  flex-direction: column;\\n  width: 200px;\\n}\\n\\n.task-item {\\n  display: flex;\\n  align-items: center;\\n  justify-content: space-between;\\n}\\n\\n.new-task {\\n  align-self: flex-end;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://setup-webpack/./src/style.css?./node_modules/css-loader/dist/cjs.js");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/noSourceMaps.js */ \"./node_modules/css-loader/dist/runtime/noSourceMaps.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ \"./node_modules/css-loader/dist/runtime/api.js\");\n/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);\n// Imports\n\n\nvar ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));\n// Module\n___CSS_LOADER_EXPORT___.push([module.id, \"/* ---- global style ---- */\\n* {\\n  box-sizing: border-box;\\n  padding: 0;\\n  margin: 0;\\n}\\n\\nul {\\n  list-style: none;\\n  padding: 20px;\\n}\\n\\nbody,\\nmain {\\n  height: 100vh;\\n  font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;\\n}\\n\\ntextarea {\\n  font-family: 'Open Sans', 'Lucida Grande', tahoma, verdana, arial, sans-serif;\\n}\\n\\n/* ---- list styles ---- */\\n\\n.todolist-container {\\n  margin: auto;\\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\\n  max-width: 500px;\\n  margin-top: 60px;\\n}\\n\\n.header-container {\\n  display: flex;\\n  align-items: center;\\n  justify-content: space-between;\\n  padding: 1rem 1rem;\\n}\\n\\n.todolis-header {\\n  display: flex;\\n  font-size: 15px;\\n  font-weight: 300;\\n}\\n\\n.refresh-btn {\\n  display: flex;\\n  align-items: center;\\n  justify-content: center;\\n  width: 30px;\\n  height: 30px;\\n  cursor: pointer;\\n  opacity: 30%;\\n}\\n\\n.refresh-btn:hover {\\n  opacity: 100%;\\n}\\n\\n.todolist {\\n  display: flex;\\n  flex-direction: column;\\n  padding: 0;\\n}\\n\\n.new-task {\\n  display: flex;\\n  align-items: center;\\n  padding: 1rem 1rem;\\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\\n  border-top: 1px solid rgba(0, 0, 0, 0.08);\\n}\\n\\n.return-btn {\\n  height: 30px;\\n  width: 30px;\\n  background-repeat: no-repeat;\\n  background-position: center;\\n  background-size: 35%;\\n  border: none;\\n  background-color: #fff;\\n  cursor: pointer;\\n}\\n\\n.task-item {\\n  display: flex;\\n  align-items: center;\\n  justify-content: space-between;\\n  padding: 1rem 1rem;\\n  gap: 15px;\\n  width: 100%;\\n  border-bottom: 1px solid rgba(0, 0, 0, 0.08);\\n}\\n\\n.task-checkbox {\\n  height: 1.2rem;\\n  width: 1.2rem;\\n  border: 3px solid #000;\\n}\\n\\n.task-input,\\n.new-task-input {\\n  font-size: 1em;\\n  font-weight: 100;\\n  overflow: auto;\\n  resize: none;\\n  width: 100%;\\n  border: none;\\n}\\n\\n.three-dots {\\n  display: flex;\\n  align-items: center;\\n  justify-content: center;\\n  width: 30px;\\n  height: 30px;\\n  cursor: move;\\n  opacity: 30%;\\n}\\n\\n.three-dots:hover {\\n  opacity: 100%;\\n}\\n\\n.tasklist-clear-completed {\\n  display: flex;\\n  align-items: center;\\n  font-size: 1rem;\\n  justify-content: center;\\n  background-color: #f6f6f6;\\n}\\n\\n.tasklist-clear-completed span {\\n  padding: 1rem 2rem;\\n  cursor: pointer;\\n  opacity: 50%;\\n}\\n\\n.tasklist-clear-completed span:hover {\\n  opacity: 100%;\\n}\\n\", \"\"]);\n// Exports\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);\n\n\n//# sourceURL=webpack://setup-webpack/./src/style.css?./node_modules/css-loader/dist/cjs.js");
 
 /***/ }),
 
@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _modules_load_list__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/load-list */ \"./src/modules/load-list.js\");\n/* harmony import */ var _modules_tasklist__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/tasklist */ \"./src/modules/tasklist.js\");\n\n\n\n\nconst tasklist = new _modules_tasklist__WEBPACK_IMPORTED_MODULE_2__[\"default\"]();\ntasklist.addTask(\"homework\");\ntasklist.addTask(\"buy groceries\");\ntasklist.addTask(\"house cleaning\");\n\n(0,_modules_load_list__WEBPACK_IMPORTED_MODULE_1__[\"default\"])(tasklist);\n\n//# sourceURL=webpack://setup-webpack/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./style.css */ \"./src/style.css\");\n/* harmony import */ var _assets_return_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./assets/return.png */ \"./src/assets/return.png\");\n/* harmony import */ var _modules_load_list__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/load-list */ \"./src/modules/load-list.js\");\n/* harmony import */ var _modules_tasklist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/tasklist */ \"./src/modules/tasklist.js\");\n\n\n\n\n\nconst tasklist = new _modules_tasklist__WEBPACK_IMPORTED_MODULE_3__[\"default\"]();\ntasklist.addTask(\"homework\");\ntasklist.addTask(\"buy groceries\");\ntasklist.addTask(\"house cleaning\");\ntasklist.addTask(\"last item\");\n\n(0,_modules_load_list__WEBPACK_IMPORTED_MODULE_2__[\"default\"])(tasklist);\n\n//# sourceURL=webpack://setup-webpack/./src/index.js?");
 
 /***/ }),
 
@@ -126,7 +126,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst loadlist = (tasklist) => {\n  const taskListContainer = document.querySelector('.todolist-container');\n\n  const li = document.createElement('li');\n  li.classList.add('new-task');\n  const textBox = document.createElement('input');\n  li.appendChild(textBox);\n  taskListContainer.appendChild(li);\n  for (let i = 0; i < tasklist.list.length; i += 1) {\n    const li = document.createElement('li');\n    li.classList.add('task-item');\n    li.id = i;\n    const textBox = document.createElement('input');\n    textBox.value = tasklist.list[i].description;\n \n    const check = document.createElement('input');\n    check.setAttribute('type', 'checkbox');\n    li.appendChild(check);\n    li.appendChild(textBox);\n    taskListContainer.appendChild(li);\n  }\n\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadlist);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/load-list.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _assets_return_png__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../assets/return.png */ \"./src/assets/return.png\");\n\nconst loadlist = (tasklist) => {\n  const taskListContainer = document.querySelector('.todolist');\n  taskListContainer.textContent = '';\n  \n  // New Task text input creation\n  const newTask = document.createElement('li');\n  newTask.classList.add('new-task');\n\n  const textBox = document.createElement('textarea');\n  textBox.rows = 1;\n  textBox.setAttribute('placeholder', 'Add to your list...');\n  textBox.classList.add('new-task-input');\n  newTask.appendChild(textBox);\n\n  const returnBtn = document.createElement('button');\n  returnBtn.classList.add('return-btn');\n  returnBtn.style.backgroundImage = `url('${_assets_return_png__WEBPACK_IMPORTED_MODULE_0__}')`;\n  console.log(_assets_return_png__WEBPACK_IMPORTED_MODULE_0__);\n  newTask.appendChild(returnBtn);\n\n  taskListContainer.appendChild(newTask);\n\n  // produce the task lis \n  for (let i = 0; i < tasklist.list.length; i += 1) {\n\n    const li = document.createElement('li');\n    li.classList.add('task-item');\n    li.id = i;\n\n    const textBox = document.createElement('textarea');\n    textBox.rows = 1;\n    textBox.value = tasklist.list[i].description;\n    textBox.classList.add('task-input');\n    \n    const check = document.createElement('input');\n    check.setAttribute('type', 'checkbox');\n    check.classList.add('task-checkbox');\n    \n    const threeDots = document.createElement('span');\n    threeDots.classList.add('three-dots');\n    threeDots.innerHTML = `\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" height=\"12px\" width=\"12px\">\n      <path d=\"m256 128c35 0 64-29 64-64 0-35-29-64-64-64-35 0-64 29-64 64 0 35 29 64 64 64z m0 64c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z m0 192c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z\" />\n    </svg>\n    `\n    \n    li.appendChild(check);\n    li.appendChild(textBox);\n    li.appendChild(threeDots);\n    taskListContainer.appendChild(li);\n  }\n\n  const tasklistClear = document.createElement('li');\n  tasklistClear.classList.add('tasklist-clear-completed');\n  const taskClearSpan = document.createElement('span');\n  taskClearSpan.textContent = \"Clear all completed\";\n  tasklistClear.appendChild(taskClearSpan);\n  taskListContainer.appendChild(tasklistClear);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (loadlist);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/load-list.js?");
 
 /***/ }),
 
@@ -136,7 +136,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass TaskList {\n  list = [];\n\n  constructor() {\n    this.list = [];\n  }\n\n  addTask = (description, taskDone = false) => {\n    const task = {\n      description: description,\n      taskDone: taskDone,\n      index: this.list.length,\n    };\n    this.list.push(task);\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TaskList);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/tasklist.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nclass TaskList {\n  list = [];\n\n  constructor() {\n    this.list = [];\n  }\n\n  addTask = (description, taskDone = false) => {\n    for (let i = 0; i < this.list.length; i += 1) {\n      this.list[i].index = this.list.length + 1 - i;\n    }\n    const task = {\n      description: description,\n      taskDone: taskDone,\n      index: 1,\n    };\n    this.list.push(task);\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (TaskList);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/tasklist.js?");
+
+/***/ }),
+
+/***/ "./src/assets/return.png":
+/*!*******************************!*\
+  !*** ./src/assets/return.png ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("module.exports = __webpack_require__.p + \"fa544f635765db738d2e.png\";\n\n//# sourceURL=webpack://setup-webpack/./src/assets/return.png?");
 
 /***/ })
 
@@ -191,6 +201,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -205,6 +227,26 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript)
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) scriptUrl = scripts[scripts.length - 1].src
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl;
 /******/ 	})();
 /******/ 	
 /******/ 	/* webpack/runtime/nonce */
