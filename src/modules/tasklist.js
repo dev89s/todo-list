@@ -10,8 +10,8 @@ class TaskList {
       this.list[i].index = this.list.length + 1 - i;
     }
     const task = {
-      description: description,
-      taskDone: taskDone,
+      description,
+      taskDone,
       index: 1,
     };
     this.list.push(task);

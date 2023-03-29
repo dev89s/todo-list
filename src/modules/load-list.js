@@ -1,8 +1,9 @@
 import returnIcon from '../assets/return.png';
+
 const loadlist = (tasklist) => {
   const taskListContainer = document.querySelector('.todolist');
   taskListContainer.textContent = '';
-  
+
   // New Task text input creation
   const newTask = document.createElement('li');
   newTask.classList.add('new-task');
@@ -16,14 +17,12 @@ const loadlist = (tasklist) => {
   const returnBtn = document.createElement('button');
   returnBtn.classList.add('return-btn');
   returnBtn.style.backgroundImage = `url('${returnIcon}')`;
-  console.log(returnIcon);
   newTask.appendChild(returnBtn);
 
   taskListContainer.appendChild(newTask);
 
-  // produce the task lis 
+  // produce the task lis
   for (let i = 0; i < tasklist.list.length; i += 1) {
-
     const li = document.createElement('li');
     li.classList.add('task-item');
     li.id = i;
@@ -32,19 +31,19 @@ const loadlist = (tasklist) => {
     textBox.rows = 1;
     textBox.value = tasklist.list[i].description;
     textBox.classList.add('task-input');
-    
+
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
     check.classList.add('task-checkbox');
-    
+
     const threeDots = document.createElement('span');
     threeDots.classList.add('three-dots');
     threeDots.innerHTML = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="12px" width="12px">
       <path d="m256 128c35 0 64-29 64-64 0-35-29-64-64-64-35 0-64 29-64 64 0 35 29 64 64 64z m0 64c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z m0 192c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z" />
     </svg>
-    `
-    
+    `;
+
     li.appendChild(check);
     li.appendChild(textBox);
     li.appendChild(threeDots);
@@ -54,9 +53,9 @@ const loadlist = (tasklist) => {
   const tasklistClear = document.createElement('li');
   tasklistClear.classList.add('tasklist-clear-completed');
   const taskClearSpan = document.createElement('span');
-  taskClearSpan.textContent = "Clear all completed";
+  taskClearSpan.textContent = 'Clear all completed';
   tasklistClear.appendChild(taskClearSpan);
   taskListContainer.appendChild(tasklistClear);
-}
+};
 
-export default loadlist
+export default loadlist;
