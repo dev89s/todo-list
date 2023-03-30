@@ -1,5 +1,5 @@
 import removeTask from './remove-task.js';
-
+import editTask from './edit-task.js';
 /**
  *
  * @param {TaskList} tasklist
@@ -54,11 +54,16 @@ const loadTasksToList = (tasklist) => {
         tasklist.list[i].completed = false;
       }
     });
+    let taskDesc;
     textBox.addEventListener('focusin', () => {
       threeDots.style.display = 'none';
       trashBtn.style.display = 'flex';
+      taskDesc = textBox.value;
     });
     textBox.addEventListener('focusout', () => {
+      if (taskDesc !== textBox.value) {
+        editTask(tasklist, li.id, textBox.value);
+      }
       setTimeout(() => {
         threeDots.style.display = 'flex';
         trashBtn.style.display = 'none';

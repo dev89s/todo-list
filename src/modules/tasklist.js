@@ -22,6 +22,11 @@ class TaskList {
     }
     localStorage.setItem('tasks', JSON.stringify(this.list));
   }
+
+  editTask = (index, newValue) => {
+    this.list[index - 1].description = newValue;
+    localStorage.setItem('tasks', JSON.stringify(this.list));
+  }
 }
 
 export default TaskList;
