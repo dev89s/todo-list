@@ -1,7 +1,7 @@
 import returnIcon from '../assets/return.png';
 import addToList from './add-to-list.js';
 import loadTasksToList from './load-tasks.js';
-import { clearAllDone } from './status-update';
+import { clearAllDone } from './status-update.js';
 
 const loadPage = (tasklist) => {
   const toDoListContainer = document.querySelector('.todolist-container');
@@ -54,6 +54,7 @@ const loadPage = (tasklist) => {
   //* Task clear Event
   taskClearSpan.addEventListener('click', () => {
     clearAllDone(tasklist);
+    loadTasksToList(tasklist);
   });
 };
 
