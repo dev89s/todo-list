@@ -1,8 +1,8 @@
 import returnIcon from '../assets/return.png';
-import addToList from './add-to-list';
-import loadTasksToList from './load-tasks';
+import addToList from './add-to-list.js';
+import loadTasksToList from './load-tasks.js';
 
-const loadlist = (tasklist) => {
+const loadPage = (tasklist) => {
   const toDoListContainer = document.querySelector('.todolist-container');
   const taskListContainer = document.querySelector('.todolist');
   taskListContainer.textContent = '';
@@ -22,14 +22,11 @@ const loadlist = (tasklist) => {
   newTask.appendChild(returnBtn);
 
   toDoListContainer.insertBefore(newTask, taskListContainer);
-  console.log(newTask);
-  console.log(taskListContainer);
-  
+
   //* Eventlisteners for adding new tasks
   const newTaskInput = document.querySelector('.new-task-input');
-  console.log(newTaskInput);
   newTaskInput.addEventListener('keypress', (e) => {
-    if (e.key == 'Enter' && newTaskInput.value !== '') {
+    if (e.key === 'Enter' && newTaskInput.value !== '') {
       addToList(tasklist, newTaskInput.value);
       newTaskInput.value = '';
     }
@@ -50,8 +47,8 @@ const loadlist = (tasklist) => {
   const taskClearSpan = document.createElement('span');
   taskClearSpan.textContent = 'Clear all completed';
   tasklistClear.appendChild(taskClearSpan);
- 
+
   toDoListContainer.appendChild(tasklistClear);
 };
 
-export default loadlist;
+export default loadPage;
