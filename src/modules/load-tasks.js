@@ -114,6 +114,7 @@ const loadTasksToList = (tasklist) => {
       }
       li.style.borderTop = 'none';
       li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+      localStorage.setItem('tasks', JSON.stringify(tasklist.list));
       loadTasksToList(tasklist);
     })
 
