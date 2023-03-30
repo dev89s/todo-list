@@ -23,6 +23,7 @@ const loadTasksToList = (tasklist) => {
     const label = document.createElement('label');
     label.classList.add('task-lable');
     label.textContent = tasklist.list[i].description;
+    label.id = i + 1;
     label.style.width = '100%';
     if (tasklist.list[i].completed === true) {
       label.style.textDecoration = 'line-through';
@@ -41,12 +42,14 @@ const loadTasksToList = (tasklist) => {
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
     check.classList.add('task-checkbox');
+    check.id = i + 1;
     if (tasklist.list[i].completed === true) {
       check.checked = true;
     }
 
     const threeDots = document.createElement('span');
     threeDots.classList.add('three-dots');
+    threeDots.id = i + 1;
     threeDots.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="15px" width="15px">
       <path d="m256 128c35 0 64-29 64-64 0-35-29-64-64-64-35 0-64 29-64 64 0 35 29 64 64 64z m0 64c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z m0 192c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z" />
@@ -78,11 +81,13 @@ const loadTasksToList = (tasklist) => {
     li.addEventListener('dragend', () => {
       li.style.opacity = '100%';
     });
-    li.addEventListener('dragenter', () => {
+    li.addEventListener('dragenter', (e) => {
+      e.preventDefault();
       li.style.borderTop = 'solid 1px red';
       li.style.borderBottomColor = 'red';
     });
-    li.addEventListener('dragover', () => {
+    li.addEventListener('dragover', (e) => {
+      e.preventDefault();
       li.style.borderTop = 'solid 1px red';
       li.style.borderBottomColor = 'red';
     });
@@ -91,7 +96,25 @@ const loadTasksToList = (tasklist) => {
       li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
     })
     li.addEventListener('drop', (e) => {
-      console.log(e);
+      const draggableId = e.dataTransfer.getData('text/plain');
+      const targetId = e.target.id;
+      if (targetId < draggableId) {
+        const temp = tasklist.list[draggableId - 1].description;
+        for (let i = draggableId - 1; i > targetId - 1; i -= 1) {
+          tasklist.list[i].description = tasklist.list[i - 1].description;
+        }
+        tasklist.list[targetId - 1].description = temp;
+      }
+      if (targetId > draggableId) {
+        const temp = tasklist.list[draggableId - 1].description;
+        for (let i = draggableId - 1; i < targetId - 1; i += 1) {
+          tasklist.list[i ].description = tasklist.list[i + 1].description;
+        }
+        tasklist.list[targetId - 1].description = temp;
+      }
+      li.style.borderTop = 'none';
+      li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+      loadTasksToList(tasklist);
     })
 
 
