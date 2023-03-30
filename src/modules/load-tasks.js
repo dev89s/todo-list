@@ -15,11 +15,18 @@ const loadTasksToList = (tasklist) => {
 
     const textBox = document.createElement('input');
     textBox.value = tasklist.list[i].description;
+    if (tasklist.list[i].completed === true) {
+      textBox.style.textDecoration = 'line-through';
+      textBox.style.opacity = '30%';
+    }
     textBox.classList.add('task-input');
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
     check.classList.add('task-checkbox');
+    if (tasklist.list[i].completed === true) {
+      check.checked = true;
+    }
 
     const threeDots = document.createElement('span');
     threeDots.classList.add('three-dots');
@@ -48,10 +55,12 @@ const loadTasksToList = (tasklist) => {
         textBox.style.textDecoration = 'line-through';
         textBox.style.opacity = '30%';
         tasklist.list[i].completed = true;
+        localStorage.setItem('tasks', JSON.stringify(tasklist.list));
       } else {
         textBox.style.textDecoration = 'none';
         textBox.style.opacity = '100%';
         tasklist.list[i].completed = false;
+        localStorage.setItem('tasks', JSON.stringify(tasklist.list));
       }
     });
     let taskDesc;

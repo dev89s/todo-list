@@ -106,7 +106,7 @@ In order to reproduce the Awesome Books ES6 and be able to make changes for your
 ### Usage
 
   - To be able to any features to the project's current state use this command:
-    > ```$ git checkout basic-structure```
+    > ```$ git checkout add-remove```
   - Feel free to change the code and make any adjustment to the design and once you are satisfied with your work you can make a new directory and copy your files there.
 
 ### Deployment
