@@ -1,12 +1,11 @@
 import './style.css';
 import './assets/return.png';
-import loadList from './modules/load-list.js';
+import loadPage from './modules/load-page.js';
 import TaskList from './modules/tasklist.js';
 
+const localData = localStorage.getItem('tasks');
 const tasklist = new TaskList();
-tasklist.addTask('homework');
-tasklist.addTask('buy groceries');
-tasklist.addTask('house cleaning');
-tasklist.addTask('last item');
-
-loadList(tasklist);
+if (localData) {
+  tasklist.list = JSON.parse(localData);
+}
+loadPage(tasklist);

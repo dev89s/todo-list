@@ -121,6 +121,20 @@ textarea {
   opacity: 100%;
 }
 
+.trash-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 30%;
+}
+
+.trash-btn:hover {
+  opacity: 100%;
+}
+
 .tasklist-clear-completed {
   display: flex;
   align-items: center;
