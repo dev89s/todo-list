@@ -1,5 +1,6 @@
 import removeTask from './remove-task.js';
 import editTask from './edit-task.js';
+import { completeTask, uncompleteTask } from './status-update.js';
 /**
  *
  * @param {TaskList} tasklist
@@ -50,19 +51,18 @@ const loadTasksToList = (tasklist) => {
     taskListContainer.appendChild(li);
 
     //* Eventlisteners for list done check
-    check.addEventListener('click', () => {
+    check.addEventListener('change', () => {
       if (check.checked) {
         textBox.style.textDecoration = 'line-through';
         textBox.style.opacity = '30%';
-        tasklist.list[i].completed = true;
-        localStorage.setItem('tasks', JSON.stringify(tasklist.list));
+        completeTask(tasklist, i);
       } else {
         textBox.style.textDecoration = 'none';
         textBox.style.opacity = '100%';
-        tasklist.list[i].completed = false;
-        localStorage.setItem('tasks', JSON.stringify(tasklist.list));
+        uncompleteTask(tasklist, i);
       }
     });
+    //* edit tasks
     let taskDesc;
     textBox.addEventListener('focusin', () => {
       threeDots.style.display = 'none';
@@ -78,6 +78,7 @@ const loadTasksToList = (tasklist) => {
         trashBtn.style.display = 'none';
       }, 500);
     });
+    //* remove task
     trashBtn.addEventListener('click', () => {
       removeTask(tasklist, li.id);
       for (let i = li.id - 1; i < taskListContainer.childNodes.length; i += 1) {
