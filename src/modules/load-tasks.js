@@ -15,12 +15,28 @@ const loadTasksToList = (tasklist) => {
     li.id = i + 1;
 
     const textBox = document.createElement('input');
+    textBox.classList.add('task-textbox');
     textBox.value = tasklist.list[i].description;
-    if (tasklist.list[i].completed === true) {
-      textBox.style.textDecoration = 'line-through';
-      textBox.style.opacity = '30%';
-    }
+
     textBox.classList.add('task-input');
+    textBox.style.display = 'none';
+    const label = document.createElement('label');
+    label.classList.add('task-lable');
+    label.textContent = tasklist.list[i].description;
+    label.style.width = '100%';
+    if (tasklist.list[i].completed === true) {
+      label.style.textDecoration = 'line-through';
+      label.style.opacity = '30%';
+    }
+    label.addEventListener('click', () => {
+      label.style.display = 'none';
+      textBox.style.display = 'block'
+      textBox.focus();
+    })
+    textBox.addEventListener('focusout', () => {
+      label.style.display = 'block';
+      textBox.style.display = 'none'
+    })
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
@@ -46,19 +62,48 @@ const loadTasksToList = (tasklist) => {
 
     li.appendChild(check);
     li.appendChild(textBox);
+    li.appendChild(label);
     li.appendChild(threeDots);
     li.appendChild(trashBtn);
+    li.draggable = true;
     taskListContainer.appendChild(li);
+
+    //* drag events
+    li.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.id);
+      setTimeout(() => {
+        li.style.opacity = '30%';
+      }, 0);
+    });
+    li.addEventListener('dragend', () => {
+      li.style.opacity = '100%';
+    });
+    li.addEventListener('dragenter', () => {
+      li.style.borderTop = 'solid 1px red';
+      li.style.borderBottomColor = 'red';
+    });
+    li.addEventListener('dragover', () => {
+      li.style.borderTop = 'solid 1px red';
+      li.style.borderBottomColor = 'red';
+    });
+    li.addEventListener('dragleave', () => {
+      li.style.borderTop = 'none';
+      li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+    })
+    li.addEventListener('drop', (e) => {
+      console.log(e);
+    })
+
 
     //* Eventlisteners for list done check
     check.addEventListener('change', () => {
       if (check.checked) {
-        textBox.style.textDecoration = 'line-through';
-        textBox.style.opacity = '30%';
+        label.style.textDecoration = 'line-through';
+        label.style.opacity = '30%';
         completeTask(tasklist, i);
       } else {
-        textBox.style.textDecoration = 'none';
-        textBox.style.opacity = '100%';
+        label.style.textDecoration = 'none';
+        label.style.opacity = '100%';
         uncompleteTask(tasklist, i);
       }
     });
