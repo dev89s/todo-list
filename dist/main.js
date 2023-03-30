@@ -136,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _tasklist__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tasklist */ \"./src/modules/tasklist.js\");\n\n\n/**\n * \n * @param {TaskList} tasklist \n * @param {Number} id \n * @param {String} newValue \n */\nconst editTask = (tasklist, id, newValue) => {\n  tasklist.editTask(id, newValue);\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editTask);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/edit-task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/**\n *\n * @param {TaskList} tasklist\n * @param {Number} id\n * @param {String} newValue\n */\nconst editTask = (tasklist, id, newValue) => {\n  tasklist.editTask(id, newValue);\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (editTask);\n\n//# sourceURL=webpack://setup-webpack/./src/modules/edit-task.js?");
 
 /***/ }),
 
