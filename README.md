@@ -75,7 +75,7 @@
 
 ## 🚀 Live Demo <a id="live-demo"></a>
 
-- An implementation of this portfolio is live on Github Pages(https://dev89s.github.io/todo-list/dist/)
+- An implementation of this portfolio is live on [Github Pages](https://dev89s.github.io/todo-list/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
