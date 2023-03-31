@@ -31,13 +31,13 @@ const loadTasksToList = (tasklist) => {
     }
     label.addEventListener('click', () => {
       label.style.display = 'none';
-      textBox.style.display = 'block'
+      textBox.style.display = 'block';
       textBox.focus();
-    })
+    });
     textBox.addEventListener('focusout', () => {
       label.style.display = 'block';
-      textBox.style.display = 'none'
-    })
+      textBox.style.display = 'none';
+    });
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
@@ -72,7 +72,6 @@ const loadTasksToList = (tasklist) => {
     taskListContainer.appendChild(li);
 
     //* drag events
-    let targetId;
     li.addEventListener('dragstart', (e) => {
       e.dataTransfer.setData('text/plain', e.target.classList[0]);
       setTimeout(() => {
@@ -84,7 +83,6 @@ const loadTasksToList = (tasklist) => {
     });
     li.addEventListener('dragenter', (e) => {
       e.preventDefault();
-      targetId = e.target.id;
       li.style.borderTop = 'solid 1px red';
       li.style.borderBottomColor = 'red';
     });
@@ -96,7 +94,7 @@ const loadTasksToList = (tasklist) => {
     li.addEventListener('dragleave', () => {
       li.style.borderTop = 'none';
       li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
-    })
+    });
     li.addEventListener('drop', (e) => {
       const draggableId = e.dataTransfer.getData('text/plain');
       const targetId = e.target.classList[0];
@@ -110,7 +108,7 @@ const loadTasksToList = (tasklist) => {
       if (targetId > draggableId) {
         const temp = tasklist.list[draggableId - 1].description;
         for (let i = draggableId - 1; i < targetId - 1; i += 1) {
-          tasklist.list[i ].description = tasklist.list[i + 1].description;
+          tasklist.list[i].description = tasklist.list[i + 1].description;
         }
         tasklist.list[targetId - 1].description = temp;
       }
@@ -118,8 +116,7 @@ const loadTasksToList = (tasklist) => {
       li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
       localStorage.setItem('tasks', JSON.stringify(tasklist.list));
       loadTasksToList(tasklist);
-    })
-
+    });
 
     //* Eventlisteners for list done check
     check.addEventListener('change', () => {
@@ -143,7 +140,7 @@ const loadTasksToList = (tasklist) => {
     textBox.addEventListener('focusout', () => {
       if (taskDesc !== textBox.value) {
         editTask(tasklist, li.classList[0], textBox.value);
-        label.textContent = textBox.value
+        label.textContent = textBox.value;
       }
       setTimeout(() => {
         threeDots.style.display = 'flex';
@@ -164,7 +161,6 @@ const loadTasksToList = (tasklist) => {
         otherCheck.classList.replace(taskId, taskId - 1);
         taskListContainer.childNodes[i].classList.replace(taskId, taskId - 1);
       }
-      console.log(li);
       taskListContainer.removeChild(li);
     });
   }
