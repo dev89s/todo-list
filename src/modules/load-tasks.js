@@ -22,7 +22,7 @@ const loadTasksToList = (tasklist) => {
     textBox.style.display = 'none';
     const label = document.createElement('label');
     label.classList.add(i + 1);
-    label.classList.add('task-lable');
+    label.classList.add('task-label');
     label.textContent = tasklist.list[i].description;
     label.style.width = '100%';
     if (tasklist.list[i].completed === true) {
@@ -48,8 +48,8 @@ const loadTasksToList = (tasklist) => {
     }
 
     const threeDots = document.createElement('span');
+    threeDots.classList.add(i + 1);
     threeDots.classList.add('three-dots');
-    threeDots.id = i + 1;
     threeDots.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="15px" width="15px">
       <path d="m256 128c35 0 64-29 64-64 0-35-29-64-64-64-35 0-64 29-64 64 0 35 29 64 64 64z m0 64c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z m0 192c-35 0-64 29-64 64 0 35 29 64 64 64 35 0 64-29 64-64 0-35-29-64-64-64z" />
@@ -126,11 +126,11 @@ const loadTasksToList = (tasklist) => {
       if (check.checked) {
         label.style.textDecoration = 'line-through';
         label.style.opacity = '30%';
-        completeTask(tasklist, i);
+        completeTask(tasklist, check.classList[0] - 1);
       } else {
         label.style.textDecoration = 'none';
         label.style.opacity = '100%';
-        uncompleteTask(tasklist, i);
+        uncompleteTask(tasklist, check.classList[0] - 1);
       }
     });
     //* edit tasks
@@ -154,8 +154,17 @@ const loadTasksToList = (tasklist) => {
     trashBtn.addEventListener('click', () => {
       removeTask(tasklist, li.classList[0]);
       for (let i = li.classList[0] - 1; i < taskListContainer.childNodes.length; i += 1) {
-        taskListContainer.childNodes[i].classList[0] -= 1;
+        const taskId = taskListContainer.childNodes[i].classList[0];
+        const otherLi = taskListContainer.childNodes[i];
+        const otherLabel = otherLi.querySelector('.task-label');
+        const otherThreeDots = otherLi.querySelector('.three-dots');
+        const otherCheck = otherLi.querySelector('.task-checkbox');
+        otherLabel.classList.replace(taskId, taskId - 1);
+        otherThreeDots.classList.replace(taskId, taskId - 1);
+        otherCheck.classList.replace(taskId, taskId - 1);
+        taskListContainer.childNodes[i].classList.replace(taskId, taskId - 1);
       }
+      console.log(li);
       taskListContainer.removeChild(li);
     });
   }
