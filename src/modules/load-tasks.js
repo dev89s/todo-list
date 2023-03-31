@@ -11,8 +11,8 @@ const loadTasksToList = (tasklist) => {
   //* produce the task list
   for (let i = 0; i < tasklist.list.length; i += 1) {
     const li = document.createElement('li');
+    li.classList.add(i + 1);
     li.classList.add('task-item');
-    li.id = i + 1;
 
     const textBox = document.createElement('input');
     textBox.classList.add('task-textbox');
@@ -21,9 +21,9 @@ const loadTasksToList = (tasklist) => {
     textBox.classList.add('task-input');
     textBox.style.display = 'none';
     const label = document.createElement('label');
+    label.classList.add(i + 1);
     label.classList.add('task-lable');
     label.textContent = tasklist.list[i].description;
-    label.id = i + 1;
     label.style.width = '100%';
     if (tasklist.list[i].completed === true) {
       label.style.textDecoration = 'line-through';
@@ -41,8 +41,8 @@ const loadTasksToList = (tasklist) => {
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
+    check.classList.add(i + 1);
     check.classList.add('task-checkbox');
-    check.id = i + 1;
     if (tasklist.list[i].completed === true) {
       check.checked = true;
     }
@@ -72,8 +72,9 @@ const loadTasksToList = (tasklist) => {
     taskListContainer.appendChild(li);
 
     //* drag events
+    let targetId;
     li.addEventListener('dragstart', (e) => {
-      e.dataTransfer.setData('text/plain', e.target.id);
+      e.dataTransfer.setData('text/plain', e.target.classList[0]);
       setTimeout(() => {
         li.style.opacity = '30%';
       }, 0);
@@ -83,6 +84,7 @@ const loadTasksToList = (tasklist) => {
     });
     li.addEventListener('dragenter', (e) => {
       e.preventDefault();
+      targetId = e.target.id;
       li.style.borderTop = 'solid 1px red';
       li.style.borderBottomColor = 'red';
     });
@@ -97,7 +99,7 @@ const loadTasksToList = (tasklist) => {
     })
     li.addEventListener('drop', (e) => {
       const draggableId = e.dataTransfer.getData('text/plain');
-      const targetId = e.target.id;
+      const targetId = e.target.classList[0];
       if (targetId < draggableId) {
         const temp = tasklist.list[draggableId - 1].description;
         for (let i = draggableId - 1; i > targetId - 1; i -= 1) {
@@ -140,7 +142,8 @@ const loadTasksToList = (tasklist) => {
     });
     textBox.addEventListener('focusout', () => {
       if (taskDesc !== textBox.value) {
-        editTask(tasklist, li.id, textBox.value);
+        editTask(tasklist, li.classList[0], textBox.value);
+        label.textContent = textBox.value
       }
       setTimeout(() => {
         threeDots.style.display = 'flex';
@@ -149,9 +152,9 @@ const loadTasksToList = (tasklist) => {
     });
     //* remove task
     trashBtn.addEventListener('click', () => {
-      removeTask(tasklist, li.id);
-      for (let i = li.id - 1; i < taskListContainer.childNodes.length; i += 1) {
-        taskListContainer.childNodes[i].id -= 1;
+      removeTask(tasklist, li.classList[0]);
+      for (let i = li.classList[0] - 1; i < taskListContainer.childNodes.length; i += 1) {
+        taskListContainer.childNodes[i].classList[0] -= 1;
       }
       taskListContainer.removeChild(li);
     });
