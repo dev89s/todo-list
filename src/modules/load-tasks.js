@@ -11,25 +11,44 @@ const loadTasksToList = (tasklist) => {
   //* produce the task list
   for (let i = 0; i < tasklist.list.length; i += 1) {
     const li = document.createElement('li');
+    li.classList.add(i + 1);
     li.classList.add('task-item');
-    li.id = i + 1;
 
     const textBox = document.createElement('input');
+    textBox.classList.add('task-textbox');
     textBox.value = tasklist.list[i].description;
-    if (tasklist.list[i].completed === true) {
-      textBox.style.textDecoration = 'line-through';
-      textBox.style.opacity = '30%';
-    }
+
     textBox.classList.add('task-input');
+    textBox.style.display = 'none';
+    const label = document.createElement('label');
+    label.classList.add(i + 1);
+    label.classList.add('task-label');
+    label.textContent = tasklist.list[i].description;
+    label.style.width = '100%';
+    if (tasklist.list[i].completed === true) {
+      label.style.textDecoration = 'line-through';
+      label.style.opacity = '30%';
+    }
+    label.addEventListener('click', () => {
+      label.style.display = 'none';
+      textBox.style.display = 'block';
+      textBox.focus();
+    });
+    textBox.addEventListener('focusout', () => {
+      label.style.display = 'block';
+      textBox.style.display = 'none';
+    });
 
     const check = document.createElement('input');
     check.setAttribute('type', 'checkbox');
+    check.classList.add(i + 1);
     check.classList.add('task-checkbox');
     if (tasklist.list[i].completed === true) {
       check.checked = true;
     }
 
     const threeDots = document.createElement('span');
+    threeDots.classList.add(i + 1);
     threeDots.classList.add('three-dots');
     threeDots.innerHTML = `
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" height="15px" width="15px">
@@ -46,20 +65,69 @@ const loadTasksToList = (tasklist) => {
 
     li.appendChild(check);
     li.appendChild(textBox);
+    li.appendChild(label);
     li.appendChild(threeDots);
     li.appendChild(trashBtn);
+    li.draggable = true;
     taskListContainer.appendChild(li);
+
+    //* drag events
+    li.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', e.target.classList[0]);
+      setTimeout(() => {
+        li.style.opacity = '30%';
+      }, 0);
+    });
+    li.addEventListener('dragend', () => {
+      li.style.opacity = '100%';
+    });
+    li.addEventListener('dragenter', (e) => {
+      e.preventDefault();
+      li.style.borderTop = 'solid 1px red';
+      li.style.borderBottomColor = 'red';
+    });
+    li.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      li.style.borderTop = 'solid 1px red';
+      li.style.borderBottomColor = 'red';
+    });
+    li.addEventListener('dragleave', () => {
+      li.style.borderTop = 'none';
+      li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+    });
+    li.addEventListener('drop', (e) => {
+      const draggableId = e.dataTransfer.getData('text/plain');
+      const targetId = e.target.classList[0];
+      if (targetId < draggableId) {
+        const temp = tasklist.list[draggableId - 1].description;
+        for (let i = draggableId - 1; i > targetId - 1; i -= 1) {
+          tasklist.list[i].description = tasklist.list[i - 1].description;
+        }
+        tasklist.list[targetId - 1].description = temp;
+      }
+      if (targetId > draggableId) {
+        const temp = tasklist.list[draggableId - 1].description;
+        for (let i = draggableId - 1; i < targetId - 1; i += 1) {
+          tasklist.list[i].description = tasklist.list[i + 1].description;
+        }
+        tasklist.list[targetId - 1].description = temp;
+      }
+      li.style.borderTop = 'none';
+      li.style.borderBottomColor = 'rgba(0, 0, 0, 0.08)';
+      localStorage.setItem('tasks', JSON.stringify(tasklist.list));
+      loadTasksToList(tasklist);
+    });
 
     //* Eventlisteners for list done check
     check.addEventListener('change', () => {
       if (check.checked) {
-        textBox.style.textDecoration = 'line-through';
-        textBox.style.opacity = '30%';
-        completeTask(tasklist, i);
+        label.style.textDecoration = 'line-through';
+        label.style.opacity = '30%';
+        completeTask(tasklist, check.classList[0] - 1);
       } else {
-        textBox.style.textDecoration = 'none';
-        textBox.style.opacity = '100%';
-        uncompleteTask(tasklist, i);
+        label.style.textDecoration = 'none';
+        label.style.opacity = '100%';
+        uncompleteTask(tasklist, check.classList[0] - 1);
       }
     });
     //* edit tasks
@@ -71,7 +139,8 @@ const loadTasksToList = (tasklist) => {
     });
     textBox.addEventListener('focusout', () => {
       if (taskDesc !== textBox.value) {
-        editTask(tasklist, li.id, textBox.value);
+        editTask(tasklist, li.classList[0], textBox.value);
+        label.textContent = textBox.value;
       }
       setTimeout(() => {
         threeDots.style.display = 'flex';
@@ -80,9 +149,17 @@ const loadTasksToList = (tasklist) => {
     });
     //* remove task
     trashBtn.addEventListener('click', () => {
-      removeTask(tasklist, li.id);
-      for (let i = li.id - 1; i < taskListContainer.childNodes.length; i += 1) {
-        taskListContainer.childNodes[i].id -= 1;
+      removeTask(tasklist, li.classList[0]);
+      for (let i = li.classList[0] - 1; i < taskListContainer.childNodes.length; i += 1) {
+        const taskId = taskListContainer.childNodes[i].classList[0];
+        const otherLi = taskListContainer.childNodes[i];
+        const otherLabel = otherLi.querySelector('.task-label');
+        const otherThreeDots = otherLi.querySelector('.three-dots');
+        const otherCheck = otherLi.querySelector('.task-checkbox');
+        otherLabel.classList.replace(taskId, taskId - 1);
+        otherThreeDots.classList.replace(taskId, taskId - 1);
+        otherCheck.classList.replace(taskId, taskId - 1);
+        taskListContainer.childNodes[i].classList.replace(taskId, taskId - 1);
       }
       taskListContainer.removeChild(li);
     });
